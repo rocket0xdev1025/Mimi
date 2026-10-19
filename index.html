@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mimi the Cat · $Mimi</title>
+  <meta name="description" content="Mimi the cat ($Mimi) on Solana. With Ansem's help, this could be the next PVE runner for the trenches while doing something wholesome and positive.">
+  <meta name="theme-color" content="#FFF8F3">
+  <link rel="icon" href="logo.png" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,520;0,9..144,680;1,9..144,520&family=Outfit:wght@360;460;560;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: "#FFF8F3",
+            fur: "#F4EFE8",
+            blush: "#F3C5C8",
+            ear: "#E39AA3",
+            ink: "#2C2628",
+            soot: "#5C5456",
+            eye: "#5E6E78",
+            paw: "#1A1614"
+          },
+          fontFamily: {
+            display: ["Fraunces", "Georgia", "serif"],
+            body: ["Outfit", "system-ui", "sans-serif"]
+          },
+          boxShadow: {
+            sofa: "0 24px 60px rgba(42, 32, 34, 0.16)"
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    :root {
+      --cream: #FFF8F3;
+      --ink: #2C2628;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: Outfit, system-ui, sans-serif;
+      color: var(--ink);
+      background: #1a1420 url("banner.jpg") center / cover no-repeat fixed;
+    }
+
+    ::selection {
+      background: #F3C5C8;
+      color: #2C2628;
+    }
+
+    .glass {
+      background: rgba(255, 248, 243, 0.84);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 24px 60px rgba(42, 32, 34, 0.16);
+      backdrop-filter: blur(18px);
+    }
+
+    .ear {
+      position: absolute;
+      top: -16px;
+      width: 34px;
+      height: 46px;
+      background: linear-gradient(#fffdfb 30%, #f7dfe1 100%);
+      z-index: 0;
+    }
+
+    .ear::after {
+      content: "";
+      position: absolute;
+      left: 8px;
+      right: 8px;
+      top: 8px;
+      bottom: 14px;
+      background: #e39aa3;
+      border-radius: inherit;
+    }
+
+    .ear-l {
+      left: 10px;
+      border-radius: 80% 80% 18% 18%;
+      transform: rotate(-24deg);
+    }
+
+    .ear-r {
+      right: 10px;
+      border-radius: 80% 80% 18% 18%;
+      transform: rotate(24deg);
+    }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: ticker 32s linear infinite;
+    }
+
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+
+    @keyframes ticker {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+
+    @keyframes floaty {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-7px); }
+    }
+
+    .floaty { animation: floaty 5.5s ease-in-out infinite; }
+
+    .quote-mark {
+      font-family: Fraunces, Georgia, serif;
+      font-size: 4.5rem;
+      line-height: 0.7;
+      color: #e39aa3;
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid #e39aa3;
+      outline-offset: 3px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .marquee-track,
+      .floaty { animation: none; }
+    }
+  </style>
+</head>
+<body class="antialiased">
+  <div class="pointer-events-none fixed inset-0 -z-10 bg-gradient-to-b from-black/25 via-transparent to-black/35"></div>
+
+  <header class="fixed inset-x-0 top-0 z-50 px-3 pt-3 md:px-6">
+    <div class="glass mx-auto flex max-w-6xl items-center justify-between rounded-full px-3 py-2 md:px-4">
+      <a href="#top" class="flex items-center gap-2.5 pl-1">
+        <img src="logo.png" alt="" class="h-10 w-10 rounded-full object-cover ring-2 ring-white" width="40" height="40">
+        <span class="font-display text-lg leading-none">
+          Mimi
+          <span class="block font-body text-[11px] font-medium uppercase tracking-[0.18em] text-soot">the cat</span>
+        </span>
+      </a>
+      <nav class="hidden items-center gap-6 text-sm font-medium text-soot md:flex">
+        <a href="#story" class="transition hover:text-ink">Story</a>
+        <a href="#how-to-buy" class="transition hover:text-ink">How to Buy</a>
+        <a href="#chart" class="transition hover:text-ink">Chart</a>
+      </nav>
+      <div class="flex items-center gap-2">
+        <a href="https://x.com/Mimithecat" target="_blank" rel="noopener noreferrer" aria-label="Mimi the cat on X" class="overflow-hidden rounded-full ring-2 ring-white transition hover:scale-105">
+          <img src="x.png" alt="X" class="h-9 w-9 object-cover" width="36" height="36">
+        </a>
+        <a href="https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=TBA" target="_blank" rel="noopener noreferrer" class="rounded-full bg-paw px-4 py-2 text-sm font-semibold text-cream shadow-md transition hover:bg-ink">
+          Buy Now
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="flex min-h-[100svh] items-end justify-center px-4 pb-8 pt-28 md:items-center md:justify-end md:pr-10 lg:pr-20">
+      <div class="glass w-full max-w-xl rounded-[2rem] p-6 md:p-8">
+        <div class="flex items-center gap-4">
+          <div class="floaty relative h-24 w-24 shrink-0">
+            <span class="ear ear-l"></span>
+            <span class="ear ear-r"></span>
+            <img src="logo.png" alt="Mimi the cat" class="relative z-10 h-24 w-24 rounded-full object-cover ring-[5px] ring-white shadow-lg" width="96" height="96">
+          </div>
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-eye">Solana meme</p>
+            <h1 class="font-display text-5xl leading-none text-ink md:text-6xl">Mimi</h1>
+            <p class="mt-1 text-lg text-soot">the cat <span class="mx-1 text-blush">·</span> <span class="font-semibold text-ink">$Mimi</span></p>
+          </div>
+        </div>
+
+        <p class="mt-6 font-display text-2xl italic leading-snug text-ink md:text-[1.7rem]">
+          <span class="quote-mark mr-1 align-top">“</span>With Ansem's help, this could be the next PVE runner for the trenches while doing something wholesome and positive.
+        </p>
+
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=TBA" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full bg-paw px-6 py-3 text-sm font-semibold text-cream shadow-lg transition hover:-translate-y-0.5 hover:bg-ink">
+            Buy Now
+          </a>
+          <a href="https://dexscreener.com/solana/TBA" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full border border-ink/10 bg-white/80 px-6 py-3 text-sm font-semibold text-ink shadow-sm transition hover:-translate-y-0.5 hover:bg-white">
+            Chart
+          </a>
+        </div>
+
+        <button type="button" id="copy-ca" class="mt-4 flex w-full items-center gap-3 rounded-2xl border border-dashed border-ear/70 bg-white/70 px-4 py-3 text-left transition hover:bg-white">
+          <span class="rounded-full bg-blush px-2.5 py-1 text-[11px] font-bold uppercase tracking-wider text-ink">CA</span>
+          <span id="ca-value" class="min-w-0 flex-1 truncate font-mono text-sm text-ink">TBA</span>
+          <span id="copy-label" class="shrink-0 text-sm font-semibold text-eye">Copy</span>
+        </button>
+      </div>
+    </section>
+
+    <div class="marquee overflow-hidden border-y border-white/50 bg-cream/75 py-3 backdrop-blur-md">
+      <div class="marquee-track gap-8 whitespace-nowrap text-xs font-semibold uppercase tracking-[0.28em] text-soot">
+        <span class="px-4">$Mimi · Mimi the cat · Wholesome PVE · For the trenches · Soft paws · With Ansem's help · Solana · White cat energy ·</span>
+        <span class="px-4" aria-hidden="true">$Mimi · Mimi the cat · Wholesome PVE · For the trenches · Soft paws · With Ansem's help · Solana · White cat energy ·</span>
+      </div>
+    </div>
+
+    <section id="story" class="mx-auto max-w-6xl px-4 py-16 md:py-24">
+      <div class="grid items-start gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+        <div class="glass rounded-[2rem] p-7 md:p-10">
+          <p class="text-xs font-semibold uppercase tracking-[0.22em] text-eye">The white cat</p>
+          <h2 class="mt-2 font-display text-4xl leading-tight md:text-5xl">A raised paw for the people who stay kind.</h2>
+          <p class="mt-5 text-lg leading-relaxed text-soot">
+            Mimi is the little white cat on the sofa, watching the city light up. The run is PVE: one direction, one community, nobody clawing the person next to them. With Ansem's help, this could be the next PVE runner for the trenches while doing something wholesome and positive.
+          </p>
+          <p class="mt-4 text-lg leading-relaxed text-soot">
+            Soft fur. Clean intentions. A chart you can watch together. Hold something that feels good to root for.
+          </p>
+          <dl class="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
+            <div class="rounded-2xl bg-white/70 p-3">
+              <dt class="text-[11px] font-semibold uppercase tracking-wider text-eye">Name</dt>
+              <dd class="mt-1 font-semibold">Mimi the cat</dd>
+            </div>
+            <div class="rounded-2xl bg-white/70 p-3">
+              <dt class="text-[11px] font-semibold uppercase tracking-wider text-eye">Symbol</dt>
+              <dd class="mt-1 font-semibold">Mimi</dd>
+            </div>
+            <div class="rounded-2xl bg-white/70 p-3">
+              <dt class="text-[11px] font-semibold uppercase tracking-wider text-eye">Chain</dt>
+              <dd class="mt-1 font-semibold">Solana</dd>
+            </div>
+            <div class="rounded-2xl bg-blush/50 p-3">
+              <dt class="text-[11px] font-semibold uppercase tracking-wider text-eye">Ticker</dt>
+              <dd class="mt-1 font-semibold">$Mimi</dd>
+            </div>
+          </dl>
+        </div>
+
+        <div class="grid gap-4">
+          <article class="glass rounded-[1.75rem] p-6">
+            <p class="font-display text-3xl text-ear">01</p>
+            <h3 class="mt-1 font-display text-2xl">Wholesome on purpose</h3>
+            <p class="mt-2 leading-relaxed text-soot">Mimi shows up to do something positive. A white cat, a kind timeline, and a community that would rather lift than tear down.</p>
+          </article>
+          <article class="glass rounded-[1.75rem] bg-white/75 p-6">
+            <p class="font-display text-3xl text-ear">02</p>
+            <h3 class="mt-1 font-display text-2xl">PVE for the trenches</h3>
+            <p class="mt-2 leading-relaxed text-soot">Players versus the chaos, not each other. With Ansem's help, Mimi can be the runner the trenches actually feel good about.</p>
+          </article>
+          <article class="glass rounded-[1.75rem] p-6">
+            <p class="font-display text-3xl text-ear">03</p>
+            <h3 class="mt-1 font-display text-2xl">Born on Solana</h3>
+            <p class="mt-2 leading-relaxed text-soot">Swap from SOL, keep the CA handy, and follow the chart in the open. One paw up is the whole signal.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="how-to-buy" class="mx-auto max-w-6xl px-4 pb-16 md:pb-24">
+      <div class="glass rounded-[2rem] p-7 md:p-10">
+        <div class="max-w-2xl">
+          <p class="text-xs font-semibold uppercase tracking-[0.22em] text-eye">Solana</p>
+          <h2 class="mt-2 font-display text-4xl md:text-5xl">How to Buy</h2>
+          <p class="mt-3 text-lg text-soot">Four calm steps to pick up $Mimi with SOL. Match the contract on this page before you confirm.</p>
+        </div>
+
+        <ol class="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+          <li class="flex flex-col rounded-[1.5rem] bg-white/80 p-5 ring-1 ring-white">
+            <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-blush font-display text-xl">1</span>
+            <h3 class="mt-4 font-display text-2xl">Get a Solana wallet</h3>
+            <p class="mt-2 flex-1 leading-relaxed text-soot">Install Phantom or Solflare, create a wallet, and store the recovery phrase somewhere offline and private.</p>
+          </li>
+          <li class="flex flex-col rounded-[1.5rem] bg-fur/90 p-5 ring-1 ring-white">
+            <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-white font-display text-xl">2</span>
+            <h3 class="mt-4 font-display text-2xl">Fund it with SOL</h3>
+            <p class="mt-2 flex-1 leading-relaxed text-soot">Buy SOL on an exchange or on-ramp and send it to your wallet. Leave a little extra SOL for network fees.</p>
+          </li>
+          <li class="flex flex-col rounded-[1.5rem] bg-white/80 p-5 ring-1 ring-white">
+            <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-blush font-display text-xl">3</span>
+            <h3 class="mt-4 font-display text-2xl">Open the $Mimi swap</h3>
+            <p class="mt-2 flex-1 leading-relaxed text-soot">Hit Buy Now. The swap opens with SOL in and $Mimi out, already aimed at this contract.</p>
+          </li>
+          <li class="flex flex-col rounded-[1.5rem] bg-blush/40 p-5 ring-1 ring-white">
+            <span class="flex h-12 w-12 items-center justify-center rounded-2xl bg-paw font-display text-xl text-cream">4</span>
+            <h3 class="mt-4 font-display text-2xl">Swap and say hello</h3>
+            <p class="mt-2 flex-1 leading-relaxed text-soot">Enter your SOL amount, confirm in the wallet, and $Mimi arrives. Then watch the chart with the rest of the sofa.</p>
+          </li>
+        </ol>
+
+        <div class="mt-6 flex flex-wrap gap-3">
+          <a href="https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=TBA" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full bg-paw px-6 py-3 text-sm font-semibold text-cream transition hover:bg-ink">
+            Buy Now
+          </a>
+          <button type="button" id="copy-ca-2" class="inline-flex items-center justify-center gap-2 rounded-full border border-ink/10 bg-white px-6 py-3 text-sm font-semibold text-ink transition hover:bg-cream">
+            <span>Copy CA</span>
+            <span id="copy-label-2" class="font-mono text-eye">TBA</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <section id="chart" class="mx-auto max-w-6xl px-4 pb-28">
+      <div class="glass rounded-[2rem] p-4 md:p-6">
+        <div class="flex flex-wrap items-end justify-between gap-4 px-2 pb-4 pt-2">
+          <div>
+            <p class="text-xs font-semibold uppercase tracking-[0.22em] text-eye">Dexscreener</p>
+            <h2 class="mt-1 font-display text-4xl">Chart</h2>
+            <p class="mt-1 text-soot">The penthouse view of $Mimi. Pair address is TBA until the pool is live.</p>
+          </div>
+          <a href="https://dexscreener.com/solana/TBA" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center rounded-full border border-ink/10 bg-white px-5 py-2.5 text-sm font-semibold text-ink transition hover:bg-cream">
+            Chart
+          </a>
+        </div>
+        <div class="overflow-hidden rounded-[1.4rem] border border-white bg-white shadow-inner">
+          <iframe
+            title="Dexscreener chart for Mimi on Solana"
+            src="https://dexscreener.com/solana/TBA?embed=1&loadChartSettings=0&trades=0&tabs=0&info=0&chartLeftToolbar=0&chartDefaultOnMobile=1&chartTheme=light&theme=light&chartStyle=1&chartType=usd&interval=15"
+            class="h-[460px] w-full md:h-[560px]"
+            loading="lazy"
+          ></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/40 bg-cream/80 backdrop-blur-md">
+    <div class="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 px-4 py-8 md:flex-row md:items-center">
+      <div class="flex items-center gap-3">
+        <img src="logo.png" alt="" class="h-12 w-12 rounded-full object-cover ring-2 ring-white" width="48" height="48">
+        <div>
+          <p class="font-display text-xl leading-none">Mimi the cat</p>
+          <p class="text-sm text-soot">$Mimi on Solana · wholesome PVE</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="https://x.com/Mimithecat" target="_blank" rel="noopener noreferrer" aria-label="Mimi the cat on X" class="overflow-hidden rounded-full ring-2 ring-white">
+          <img src="x.png" alt="X" class="h-10 w-10 object-cover" width="40" height="40">
+        </a>
+        <a href="https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=TBA" target="_blank" rel="noopener noreferrer" class="rounded-full bg-paw px-4 py-2 text-sm font-semibold text-cream">Buy Now</a>
+      </div>
+    </div>
+    <p class="px-4 pb-8 text-center text-xs text-soot">$Mimi is a meme coin. This page is not financial advice. Do your own research.</p>
+  </footer>
+
+  <div class="fixed inset-x-3 bottom-3 z-40 flex gap-2 md:hidden">
+    <a href="https://swap.pump.fun/?input=So11111111111111111111111111111111111111112&output=TBA" target="_blank" rel="noopener noreferrer" class="flex-1 rounded-full bg-paw py-3 text-center text-sm font-semibold text-cream shadow-lg">Buy Now</a>
+    <a href="#chart" class="rounded-full bg-cream/95 px-5 py-3 text-center text-sm font-semibold text-ink shadow-lg">Chart</a>
+  </div>
+
+  <div id="toast" role="status" aria-live="polite" class="pointer-events-none fixed bottom-20 left-1/2 z-50 -translate-x-1/2 translate-y-2 rounded-full bg-paw px-4 py-2 text-sm font-medium text-cream opacity-0 transition duration-300 md:bottom-8">
+    Contract copied
+  </div>
+
+  <script>
+    const CA = "TBA";
+
+    function copyText(value) {
+      if (navigator.clipboard && window.isSecureContext) {
+        return navigator.clipboard.writeText(value);
+      }
+      const field = document.createElement("textarea");
+      field.value = value;
+      field.setAttribute("readonly", "");
+      field.style.position = "fixed";
+      field.style.left = "-9999px";
+      document.body.appendChild(field);
+      field.select();
+      document.execCommand("copy");
+      field.remove();
+      return Promise.resolve();
+    }
+
+    function showCopied(label) {
+      const previous = label.textContent;
+      label.textContent = "Copied";
+      const toast = document.getElementById("toast");
+      toast.classList.remove("opacity-0", "translate-y-2");
+      toast.classList.add("opacity-100", "translate-y-0");
+      window.setTimeout(() => {
+        label.textContent = previous === "Copied" ? "Copy" : previous;
+        if (label.id === "copy-label") label.textContent = "Copy";
+        if (label.id === "copy-label-2") label.textContent = CA;
+        toast.classList.add("opacity-0", "translate-y-2");
+        toast.classList.remove("opacity-100", "translate-y-0");
+      }, 1600);
+    }
+
+    document.getElementById("copy-ca").addEventListener("click", () => {
+      copyText(CA).then(() => showCopied(document.getElementById("copy-label")));
+    });
+
+    document.getElementById("copy-ca-2").addEventListener("click", () => {
+      copyText(CA).then(() => showCopied(document.getElementById("copy-label-2")));
+    });
+  </script>
+</body>
+</html>
